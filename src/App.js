@@ -1,30 +1,22 @@
 import React from 'react';
 
-
-// export default class App extends React.Component {
-//   render() {
-//     return(
-//       <React.Fragment>
-//         <label htmlFor="うまぴょい">うまぴょい</label>
-//         <input type="text" onChange={(() => {console.log("うまぴょい")})}></input>
-//       </React.Fragment>
-//     )
-//   }
-// }
 const App = () => {
+  const profiles = [
+    {name: "こばやし", age: 20},
+    {name: "やまだ", age: 22},
+    {}
+  ]
   return(
-    <div>
-      <Dog/>
-      <Dog/>
-      <Dog/>
-      <Dog/>
-      <Dog/>
-    </div>
+    profiles.map((profile, index) => {
+      return <User name={profile.name} age={profile.age} key={index} />
+    })
   )
 }
-const Dog = () => {
-  return <div>バウ!!</div>
+const User = (props) => {
+  return <div>こんにちは、わたしの名前は{props.name}で、年齢は{props.age}です。</div>
 }
-
+User.defaultProps = {
+  name: "名無し", age: 18
+}
 export default App;
 
